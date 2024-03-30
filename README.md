@@ -21,4 +21,6 @@ Descreva os passos para instalar todas as dependências necessárias para rodar 
 ```bash
 pip install pandas
 pip install matplotlib
+pip install openpyxl
+
 
