@@ -1,7 +1,6 @@
 # pages/1_Analisador.py
 import streamlit as st 
 import pandas as pd
-from controllers.eda_storage_analysis import load_data, perform_descriptive_analysis, plot_data
 from controllers.rules_handler import RulesHandler
 
 st.set_page_config(layout="wide")
