@@ -42,7 +42,11 @@ if uploaded_file_deposito is not None and uploaded_file_obras is not None:
 
             handler = RulesHandler(df_storage, df_construction)
             coverage_df = handler.assess_material_coverage()
-            st.write("COBERTURA 100% DOS MATERIAIS")
+            st.subheader("1. COBERTURA 100% DOS MATERIAIS")
+            st.write(''' 
+Esta seção identifica obras com todas as necessidades de materiais completamente atendidas pelo estoque atual. 
+A análise visa otimizar o uso de materiais e suportar uma gestão de projeto eficiente.
+''')
             coverage_df
             excel_data = to_excel(coverage_df)
             st.download_button(label='Obras Total',
@@ -50,9 +54,13 @@ if uploaded_file_deposito is not None and uploaded_file_obras is not None:
                    file_name='Obras_Total.xlsx',
                     mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
+            st.divider()
             # Agora, calcular a cobertura parcial para as obras não totalmente cobertas e atualizar o estoque
             partial_coverage_df = handler.calculate_partial_coverage()
-            st.write(" COBERTURA PARCIAL DOS MATERIAIS")
+            st.subheader("2. COBERTURA PARCIAL DOS MATERIAIS")
+            st.write(''' 
+Esta parte aborda as obras que não podem ser totalmente supridas com o inventário existente. 
+''')
             partial_coverage_df
             excel_data = to_excel(partial_coverage_df)
 
@@ -61,9 +69,13 @@ if uploaded_file_deposito is not None and uploaded_file_obras is not None:
                    file_name='Obras_Parcial.xlsx',
                    mime='application/vnd.ms-excel')
 
+            st.divider()
             # st.write("Material Atendido:")
             handler.assess_material_coverage()
-            st.write("MATERIAL ATENDIDO")
+            st.subheader("3. MATERIAL ATENDIDO")
+            st.write(''' 
+Este tópico detalha a quantidade e porcentagem de materiais que foram efetivamente alocados para cada obra, refletindo o sucesso na cobertura das necessidades de construção com o estoque disponível. 
+''')
             st.dataframe(handler.df_coverage_analysis)
             excel_data = to_excel(handler.df_coverage_analysis)
             st.download_button(label='Material',
