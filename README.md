@@ -19,8 +19,6 @@ Este projeto fornece uma solução para otimizar a alocação de materiais em pr
 Descreva os passos para instalar todas as dependências necessárias para rodar o projeto. Por exemplo:
 
 ```bash
-pip install pandas
-pip install matplotlib
-pip install openpyxl
+pip install -r requirements.txt
 
 
