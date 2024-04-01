@@ -32,9 +32,18 @@ if uploaded_file_deposito is not None and uploaded_file_obras is not None:
     # Leitura dos arquivos Excel
     try:
         df_storage = pd.read_excel(uploaded_file_deposito)
+        check_storage = st.sidebar.checkbox('Depósito', value=False)
+        if check_storage:
+            df_storage.dtype()
+            df_storage
+            
+            
         df_construction  = pd.read_excel(uploaded_file_obras)
+        check_construction  = st.sidebar.checkbox('Obras', value=False)
+        if check_storage:
+            df_construction.dtype()
+            df_construction
         
-
         analy1 = st.sidebar.checkbox('Análise da Cobertura', value=False)
         if analy1:
             handler = RulesHandler(df_storage, df_construction)
